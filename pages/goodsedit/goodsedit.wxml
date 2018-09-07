@@ -1,2 +1,38 @@
 <!--pages/goodsedit/goodsedit.wxml-->
-<text>pages/goodsedit/goodsedit.wxml</text>
+<view class="page">
+  <i-panel title="创建发货单" i-class="panelback">
+    <form class="page__bd" catchsubmit="formSubmit" catchreset="formReset">
+      <view class="i-cell i-input">
+        <view class="i-cell-hd i-input-title">货物名称</view>
+        <input class="i-input-input i-cell-bd" type="text" value="{{form.goodsName}}"></input>
+      </view>
+      <view class="i-cell i-input">
+        <view class="i-cell-hd i-input-title">单价</view>
+        <input class="i-input-input i-cell-bd" type="digit" value="{{form.prices}}"></input>
+        <view>元/斤</view>
+      </view>
+      <view class="i-cell i-input">
+          <view class="i-cell-hd i-input-title">数量</view>
+          <input class="i-input-input i-cell-bd" type="digit" value="{{form.amount}}"></input>
+          <view>斤</view>
+      </view>    
+      <view class="i-cell i-input">
+          <view class="i-cell-hd i-input-title">收货人</view>
+          <input class="i-input-input i-cell-bd" type="text" value="{{form.reciveOpenid}}"></input>
+      </view>  
+      <view class="i-cell i-input">
+          <view class="i-cell-hd i-input-title">发货日期</view>
+          <picker mode="date" value="{{form.sendDate}}" bindchange="bindDateChange">
+              <view class="i-input-input i-cell-bd">
+                {{form.sendDate}}
+              </view>
+          </picker>
+      </view>
+      <view class="btn-area">
+        <button formType="submit" type="primary" class="formbtn">确认</button>
+        <button formType="reset" type="primary" class="formbtn">返回</button>
+      </view>
+    </form>
+  </i-panel>
+</view>
+<i-message id="message" />
