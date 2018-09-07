@@ -1,0 +1,20 @@
+<!--pages/home.wxml-->
+<view class="container">
+  <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+    <swiper-item wx:for="{{banners}}" wx:key="{{item.id}}">
+      <navigator url="{{item.link}}">
+        <image src="{{item.imgUrl}}" background-size="cover"></image>
+      </navigator>
+    </swiper-item>
+  </swiper>
+  <view class="kind-list">
+    <view class="navigator-box">
+      <block wx:for="{{operationList}}" wx:key="*item">
+        <navigator url="/pages/{{item.page}}/{{item.page}}" class="navigator">
+          <view class="navigator-text">{{item.pageName}}</view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+      </block>
+    </view>
+  </view>
+</view>

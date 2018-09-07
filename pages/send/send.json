@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "发货一览",
+  "usingComponents": {
+    "i-message": "../../dist/message/index",
+    "i-cell": "../../dist/cell/index"
+  }
+}

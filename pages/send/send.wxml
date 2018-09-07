@@ -1,0 +1,21 @@
+<!--pages/send/send.wxml-->
+<view class="container">
+  <view class="search">
+    <navigator url="/pages/search/search" class="input">
+      <image class="icon" src="../../static/images/ic_search.png"></image>
+      <text class="txt">搜索</text>
+    </navigator>
+  </view>
+  <view class="kind-list">
+    <view class="navigator-box">
+      <block wx:for="{{goodsList}}" wx:key="*item">
+        <i-cell title="{{item.name}}" label="{{item.goodsName + item.amount}}斤" 
+          value="{{item.status =='2' ? '已确认' : '未确认'}}}" is-link url="/pages/goods/goods?{{item._id}}"></i-cell>
+      </block>
+    </view>
+  </view>
+  <view class="round-click">
+    <navigator url="/pages/goodsedit/goodsedit">发货</navigator>
+ </view>
+</view>
+<i-message id="message" />
