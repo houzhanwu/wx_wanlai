@@ -4,7 +4,6 @@
     "pages/gather/gather",
     "pages/goods/goods",
     "pages/goodsedit/goodsedit",
-    "pages/message/message",
     "pages/payment/payment",
     "pages/recive/recive",
     "pages/send/send",
@@ -31,16 +30,10 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/message/message",
-        "iconPath": "static/images/ic_menu_topic_nor.png",
-        "selectedIconPath": "static/images/ic_menu_topic_pressed.png",
-        "text": "消息"
-      },
-      {
         "pagePath": "pages/sum/sum",
         "iconPath": "static/images/ic_menu_me_nor.png",
         "selectedIconPath": "static/images/ic_menu_me_pressed.png",
-        "text": "我的"
+        "text": "统计"
       }
     ]
   },
