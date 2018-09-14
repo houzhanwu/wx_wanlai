@@ -1,1 +1,2 @@
 /* pages/goods/goods.wxss */
+@import "../../dist/input/index.wxss";

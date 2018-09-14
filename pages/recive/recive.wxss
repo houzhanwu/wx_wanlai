@@ -1,1 +1,2 @@
 /* pages/recive/recive.wxss */
+@import "../../common/index.wxss";

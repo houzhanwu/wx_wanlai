@@ -1,24 +1,25 @@
 <!--pages/goodsedit/goodsedit.wxml-->
 <view class="page">
   <i-panel title="创建发货单" i-class="panelback">
-    <form class="page__bd" catchsubmit="formSubmit" catchreset="formReset">
+    <form class="page__bd" catchsubmit="formSubmit" catchreset="formReset" report-submit="{{true}}">
       <view class="i-cell i-input">
         <view class="i-cell-hd i-input-title">货物名称</view>
-        <input class="i-input-input i-cell-bd" type="text" value="{{form.goodsName}}"></input>
+        <input class="i-input-input i-cell-bd" type="text" value="{{form.goodsName}}" name="goodsName" bindblur="checkRequire" id="goodsName"></input>
       </view>
       <view class="i-cell i-input">
         <view class="i-cell-hd i-input-title">单价</view>
-        <input class="i-input-input i-cell-bd" type="digit" value="{{form.prices}}"></input>
+        <input class="i-input-input i-cell-bd" type="digit" value="{{form.prices}}" name="prices" bindblur="checkNumsValue" id="prices"></input>
         <view>元/斤</view>
       </view>
       <view class="i-cell i-input">
           <view class="i-cell-hd i-input-title">数量</view>
-          <input class="i-input-input i-cell-bd" type="digit" value="{{form.amount}}"></input>
+          <input class="i-input-input i-cell-bd" type="digit" value="{{form.amount}}" name="amount" bindblur="checkNumsValue" id="amount"></input>
           <view>斤</view>
       </view>    
-      <view class="i-cell i-input">
+      <view class="i-cell i-input" bindtap="showMyusers">
           <view class="i-cell-hd i-input-title">收货人</view>
-          <input class="i-input-input i-cell-bd" type="text" value="{{form.reciveOpenid}}"></input>
+          <input class="i-input-input i-cell-bd" type="text" value="{{form.nickname}}" 
+            bindinput="bindNameChange" name="nickname" id="nickname"></input>
       </view>  
       <view class="i-cell i-input">
           <view class="i-cell-hd i-input-title">发货日期</view>
@@ -30,9 +31,10 @@
       </view>
       <view class="btn-area">
         <button formType="submit" type="primary" class="formbtn">确认</button>
-        <button formType="reset" type="primary" class="formbtn">返回</button>
+        <button formType="reset" type="primary" class="formbtn">重置</button>
       </view>
     </form>
   </i-panel>
 </view>
 <i-message id="message" />
+<i-toast id="toast" />

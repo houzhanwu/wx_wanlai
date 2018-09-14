@@ -17,4 +17,7 @@
       </block>
     </view>
   </view>
+  <view class="round-click">
+    <navigator url="/pages/goodsedit/goodsedit">发货</navigator>
+ </view>
 </view>

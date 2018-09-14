@@ -33,3 +33,11 @@
   color: #fff;
   text-align: center;
 }
+.panelback {
+  background-color: #f8f8f9;
+}
+.iborder {
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color:#e9eaec;
+}

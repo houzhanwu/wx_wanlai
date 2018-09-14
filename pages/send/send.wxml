@@ -9,10 +9,14 @@
   <view class="kind-list">
     <view class="navigator-box">
       <block wx:for="{{goodsList}}" wx:key="*item">
-        <i-cell title="{{item.name}}" label="{{item.goodsName + item.amount}}斤" 
-          value="{{item.status =='2' ? '已确认' : '未确认'}}}" is-link url="/pages/goods/goods?{{item._id}}"></i-cell>
+        <i-cell i-class="iborder" title="{{item.reciveName}}" label="{{'日期:' + item.sendDate + '--' + item.goodsName + item.amount}}斤" 
+          value="{{item.status =='1' ? '未收货' : '已收货'}}" is-link url="/pages/goods/goods?id={{item._id}}&flag=send"></i-cell>
       </block>
     </view>
+    <i-page current="{{ page.current }}" total="{{page.total}}" bind:change="handlePageChange">
+      <view slot="prev"><i-icon type="return" size="15"></i-icon></view>
+      <view slot="next"><i-icon type="enter" size="15"></i-icon></view>
+    </i-page>
   </view>
   <view class="round-click">
     <navigator url="/pages/goodsedit/goodsedit">发货</navigator>

@@ -8,15 +8,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    goodsList:[]
+    goodsList:[],
+    page: {
+      current: 1,
+      limit: 10,
+      total: 0
+    },
+    searchVaule: null
   },
 
   getSendGoods: function (status) {
-    util.request(api.GetAllGoodsOfSender, {status: status}).then(res => {
+    const search = {status: status, page: this.data.page};
+    if (this.data.searchVaule) {
+      search.value = this.data.searchVaule;
+    }
+    util.request(api.GetAllGoodsOfSender, search).then(res => {
       if (!res.data.err) {
-        const goods = res.data;
+        const pageData = res.data;
+        let goods = pageData.results;
+        const total = pageData.page.total;
+        const limit = this.data.page.limit;
+        const pageTotal = Math.ceil(total / limit);
+        goods = goods.map(item => {
+          item.sendDate = util.dateformat(item.sendDate, 'yyyy/MM/dd');
+          return item;
+        });
+
         this.setData({
-          goodsList: goods
+          goodsList: goods,
+          'page.total': pageTotal
         });
       } else {
         $Message({
@@ -32,11 +52,40 @@ Page({
       });
     })
   },
+  hasMoreRecord: function () {
+    const page = this.data.page;
+    if (page.current + 1 > page.total) {
+      return false;
+    }
+    return true;
+  },
+  handlePageChange: function ({ detail }) {
+    const type = detail.type;
+    const page = this.data.page;
+    if (type === 'next') {
+        if (!this.hasMoreRecord()) {
+          return;
+        }
+        page.current++;
+        this.setData({
+            page: page
+        });
+    } else if (type === 'prev') {
+       page.current--;
+      if (page.current < 1) {
+        page.current = 1;
+      }
+       this.setData({
+        page: page
+      });
+    }
+    this.getSendGoods('2');
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getSendGoods('2');
+
   },
 
   /**
@@ -50,7 +99,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.getSendGoods('2');
   },
 
   /**

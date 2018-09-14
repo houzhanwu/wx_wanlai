@@ -1,1 +1,2 @@
 /* pages/payment/payment.wxss */
+@import "../../common/index.wxss";

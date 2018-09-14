@@ -2,6 +2,7 @@
   "navigationBarTitleText": "发货详细",
   "usingComponents": {
     "i-panel": "../../dist/panel/index",
-    "i-message": "../../dist/message/index"
+    "i-message": "../../dist/message/index",
+    "i-toast": "../../dist/toast/index"
   }
 }

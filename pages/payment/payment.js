@@ -1,18 +1,92 @@
 // pages/payment/payment.js
+const util = require('../../utils/util.js');
+const api = require('../../config/config.js');
+const { $Message } = require('../../dist/base/index');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    goodsList:[],
+    page: {
+      current: 1,
+      limit: 10,
+      total: 0
+    },
+    searchVaule: null
   },
 
+  getNoPayGoods: function (status) {
+    const search = {status: status, page: this.data.page};
+    if (this.data.searchVaule) {
+      search.value = this.data.searchVaule;
+    }
+    util.request(api.GetAllGoodsOfReceive, search).then(res => {
+      if (!res.data.err) {
+        const pageData = res.data;
+        let goods = pageData.results;
+        const total = pageData.page.total;
+        const limit = this.data.page.limit;
+        const pageTotal = Math.ceil(total / limit);
+        goods = goods.map(item => {
+          const date = item.status === '2' ? item.reciveDate : item.sendDate;
+          item.reciveDate = util.dateformat(date, 'yyyy/MM/dd');
+          return item;
+        });
+
+        this.setData({
+          goodsList: goods,
+          'page.total': pageTotal
+        });
+      } else {
+        $Message({
+          content: res.data.err,
+          type: 'error'
+        });
+      }
+    }).catch(err => {
+      console.log(err);
+      $Message({
+        content: '系统错误',
+        type: 'error'
+      });
+    })
+  },
+  hasMoreRecord: function () {
+    const page = this.data.page;
+    if (page.current + 1 > page.total) {
+      return false;
+    }
+    return true;
+  },
+  handlePageChange: function ({ detail }) {
+    const type = detail.type;
+    const page = this.data.page;
+    if (type === 'next') {
+        if (!this.hasMoreRecord()) {
+          return;
+        }
+        page.current++;
+        this.setData({
+            page: page
+        });
+    } else if (type === 'prev') {
+       page.current--;
+      if (page.current < 1) {
+        page.current = 1;
+      }
+       this.setData({
+        page: page
+      });
+    }
+    this.getNoPayGoods('3');
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+
   },
 
   /**
@@ -26,7 +100,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.getNoPayGoods('3');
   },
 
   /**

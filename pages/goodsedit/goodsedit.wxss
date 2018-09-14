@@ -8,6 +8,3 @@
 .formbtn {
   width:200rpx;
 }
-.panelback {
-  background-color: #f8f8f9;
-}
