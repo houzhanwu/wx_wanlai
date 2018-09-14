@@ -1,2 +1,22 @@
 <!--pages/gather/gather.wxml-->
-<text>pages/gather/gather.wxml</text>
+<view class="container">
+  <view class="search">
+    <navigator url="/pages/search/search" class="input">
+      <image class="icon" src="../../static/images/ic_search.png"></image>
+      <text class="txt">搜索</text>
+    </navigator>
+  </view>
+  <view class="kind-list">
+    <view class="navigator-box">
+      <block wx:for="{{goodsList}}" wx:key="*item">
+        <i-cell i-class="iborder" title="{{item.reciveName}}" label="{{'日期:' + item.reciveMoneyDate + '--' + item.goodsName + item.amount + '斤--金额:￥' + item.payments}}" 
+          value="{{item.status =='3' ? '未确认' : '已确认'}}" is-link url="/pages/goods/goods?id={{item._id}}&flag=confirm"></i-cell>
+      </block>
+    </view>
+    <i-page current="{{ page.current }}" total="{{page.total}}" bind:change="handlePageChange">
+      <view slot="prev"><i-icon type="return" size="15"></i-icon></view>
+      <view slot="next"><i-icon type="enter" size="15"></i-icon></view>
+    </i-page>
+  </view>
+</view>
+<i-message id="message" />

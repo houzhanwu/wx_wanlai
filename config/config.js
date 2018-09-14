@@ -10,6 +10,7 @@ module.exports = {
   // DeleteBusiness: ApiRootUrl + 'business/destroy',                    // 删除交易
   GetGoodsOfSender: ApiRootUrl + 'business/getGoodsOfSender',         // 获取发货方各个状态的交易信息
   GetAllGoodsOfSender: ApiRootUrl + 'business/getAllGoodsOfSender',   // 获取发货方所有状态的交易信息
+  GetPayGoodsOfSender: ApiRootUrl + 'business/getPayGoodsOfSender',   // 获取发货方已经收款的交易信息
   GetGoodsOfReceive: ApiRootUrl + 'business/getGoodsOfReceive',       // 获取收货方各个状态的交易信息
   GetAllGoodsOfReceive: ApiRootUrl + 'business/getAllGoodsOfReceive', // 获取收货方所有状态的交易信息
   GetSumPayOfReceive: ApiRootUrl + 'business/getSumPayOfReceive',     // 获取收货方的统计交易信息

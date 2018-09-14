@@ -1,1 +1,2 @@
 /* pages/gather/gather.wxss */
+@import "../../common/index.wxss";
