@@ -1,6 +1,7 @@
 // pages/home.js
 const util = require('../../utils/util.js');
 const api = require('../../config/config.js');
+const user = require('../../services/users.js');
 Page({
 
   /**
@@ -10,17 +11,19 @@ Page({
     banners: [],
     operationList:[{
       page: 'gather',
-      pageName: '已收款',
+      pageName: '收款记录',
     },{
       page: 'payment',
-      pageName: '未付款',
+      pageName: '付款记录',
     },{
       page: 'recive',
-      pageName: '已收货',
+      pageName: '收货记录',
     },{
       page: 'send',
-      pageName: '已发货',
-    }]
+      pageName: '发货记录',
+    }],
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    isShowAuth: false
   },
 
   getBanners: function () {
@@ -34,11 +37,48 @@ Page({
       })
     })
   },
+  bindGetUserInfo (e) {
+    console.log(e.detail.userInfo)
+    if (!e.detail.userInfo) {
+      return;
+    }
+    this.setData({
+      isShowAuth: false
+    })
+    // 获取用户信息
+    user.loginByWeixin().then(res => {
+      console.log(res.data);
+    }).catch(err => {
+      console.log(err);
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.getBanners();
+    const self = this;
+    wx.getSetting({
+      success (res) {
+        if (!res.authSetting['scope.userInfo']) {
+          // 未授权，显示授权按钮
+          self.setData({
+            isShowAuth: true
+          })
+        } else {
+          user.checkLogin().then(res => {
+            console.log('用户已经登录');
+          }).catch(res => {
+            // 获取用户信息
+            user.loginByWeixin().then(res => {
+              console.log(res.data);
+            }).catch(err => {
+              console.log(err);
+            })
+          })
+        }
+      }
+    })
   },
 
   /**

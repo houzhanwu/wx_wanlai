@@ -1,0 +1,14 @@
+<!--pages/inmoney/inmoney.wxml-->
+<view class="page">
+  <view class="kind-list">
+    <view class="navigator-box">
+      <block wx:for="{{goodsList}}" wx:key="*item">
+        <i-cell i-class="iborder" title="{{item.reciveName}}" value="{{item.payments}}元" 
+          is-link url="/pages/gather/gather?value={{item.reciveName}}">
+          <i-icon type="financial_fill" slot="icon" size="35"/>
+        </i-cell>
+      </block>
+    </view>
+  </view>
+</view>  
+<i-message id="message" />

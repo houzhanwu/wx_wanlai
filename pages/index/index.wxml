@@ -1,5 +1,5 @@
 <!--pages/home.wxml-->
-<view class="container">
+<view class="container" wx:if="{{!isShowAuth}}">
   <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
     <swiper-item wx:for="{{banners}}" wx:key="{{item.id}}">
       <navigator url="{{item.link}}">
@@ -20,4 +20,8 @@
   <view class="round-click">
     <navigator url="/pages/goodsedit/goodsedit">发货</navigator>
  </view>
+</view>
+<view class="auth" wx:else>
+  <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+  <view wx:else>请升级微信版本</view>
 </view>

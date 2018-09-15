@@ -10,7 +10,7 @@
     <view class="navigator-box">
       <block wx:for="{{goodsList}}" wx:key="*item">
         <i-cell i-class="iborder" title="{{item.sendName}}" label="{{'日期:' + item.reciveDate + '--' + item.goodsName + item.amount + '斤--金额:￥' + item.payments}}" 
-          value="{{item.status =='3' ? '已付' : '未付'}}" is-link url="/pages/goods/goods?id={{item._id}}&flag=pay"></i-cell>
+          value="{{item.status >='3' ? '已付' : '未付'}}" is-link url="/pages/goods/goods?id={{item._id}}&flag=pay"></i-cell>
       </block>
     </view>
     <i-page current="{{ page.current }}" total="{{page.total}}" bind:change="handlePageChange">

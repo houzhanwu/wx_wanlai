@@ -80,13 +80,18 @@ Page({
         page: page
       });
     }
-    this.getNoPayGoods('3');
+    this.getNoPayGoods('4');
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const searchVaule = options.value;
+    if (searchVaule) {
+      this.setData({
+        searchVaule: searchVaule
+      })
+    }
   },
 
   /**
@@ -100,7 +105,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getNoPayGoods('3');
+    this.getNoPayGoods('4');
   },
 
   /**

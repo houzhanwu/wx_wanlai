@@ -28,6 +28,7 @@ Page({
     },
     id: '',
     flag: '',
+    showmodal: false,
     methodArray: [
       '微信支付',
       '支付宝支付',
@@ -55,6 +56,9 @@ Page({
     })
   },
   deleteGoos: function () {
+    this.setData({
+      showmodal: false
+    });
     util.request(`${api.Business}/${this.data.id}`, {}, 'DELETE')
     .then(res => {
       if(res.data.err) {
@@ -83,7 +87,7 @@ Page({
         })
         return;
       }
-      const pages = getCurrentPages;
+      const pages = getCurrentPages();
       if (pages.length > 1) {
         wx.navigateBack({
           delta: 1, // 回退前 delta(默认为1) 页面
@@ -113,7 +117,7 @@ Page({
         })
         return;
       }
-      const pages = getCurrentPages;
+      const pages = getCurrentPages();
       if (pages.length > 1) {
         wx.navigateBack({
           delta: 1, // 回退前 delta(默认为1) 页面
@@ -138,7 +142,7 @@ Page({
         })
         return;
       }
-      const pages = getCurrentPages;
+      const pages = getCurrentPages();
       if (pages.length > 1) {
         wx.navigateBack({
           delta: 1, // 回退前 delta(默认为1) 页面
@@ -168,6 +172,17 @@ Page({
     this.setData({
       'form.paymethod': paymethod,
     })
+  },
+  okModal () {
+    this.setData({
+      showmodal: true
+    });
+  },
+
+  cancelModal () {
+      this.setData({
+        showmodal: false
+      });
   },
   /**
    * 生命周期函数--监听页面加载

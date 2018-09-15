@@ -7,11 +7,11 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     // 获取用户信息
-    user.loginByWeixin().then(res => {
-      console.log(res.data);
-    }).catch(err => {
-      console.log(err);
-    })
+    // user.loginByWeixin().then(res => {
+    //   console.log(res.data);
+    // }).catch(err => {
+    //   console.log(err);
+    // })
   },
   globalData: {
     userInfo: null

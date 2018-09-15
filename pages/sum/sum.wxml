@@ -1,2 +1,17 @@
 <!--pages/sum/sum.wxml-->
-<text>pages/sum/sum.wxml</text>
+<view class="page">
+  <i-panel title="货款统计" i-class="panelback">
+    <view class="kind-list">
+      <view class="navigator-box">
+        <block wx:for="{{payList}}" wx:key="*item">
+          <i-cell i-class="iborder" title="{{item.name}}" label="{{item.payments}}元" 
+            is-link url="{{index == 0 ? '/pages/inmoney/inmoney' : '/pages/outmoney/outmoney'}}">
+            <i-icon type="redpacket_fill" slot="icon" size="35" wx:if="{{index == 0}}"/>
+            <i-icon type="transaction_fill" slot="icon" size="35" wx:if="{{index == 1}}"/>
+          </i-cell>
+        </block>
+      </view>
+    </view>
+  </i-panel>
+</view>
+<i-message id="message" />

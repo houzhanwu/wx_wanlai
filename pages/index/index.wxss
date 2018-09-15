@@ -1,0 +1,8 @@
+/* pages/home.wxss */
+@import "../../common/index.wxss";
+.auth {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 350rpx 50rpx;
+}

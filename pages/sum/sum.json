@@ -1,1 +1,9 @@
-{}
+{
+  "navigationBarTitleText": "我的统计",
+  "usingComponents": {
+    "i-message": "../../dist/message/index",
+    "i-cell": "../../dist/cell/index",
+    "i-icon": "../../dist/icon/index",
+    "i-panel": "../../dist/panel/index"
+  }
+}
