@@ -18,4 +18,6 @@ module.exports = {
   GetGoodsById: ApiRootUrl + 'business/getGoodsById',                 // 获取货物详细信息
   GetMyusers: ApiRootUrl + 'myuser',                                  // 获取我的客户信息
   GetMyusersByName: ApiRootUrl + 'myuser/findByName',                 // 根据昵称获取我的客户信息
+  GetMyuserBypage: ApiRootUrl + 'myuser/getMyuserBypage',             // 分页获取我的客户信息
+  GetAlluserBypage: ApiRootUrl + 'user',                              // 分页获取所有的客户信息
 };

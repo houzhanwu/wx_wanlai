@@ -3,6 +3,7 @@
   "usingComponents": {
     "i-panel": "../../dist/panel/index",
     "i-message": "../../dist/message/index",
-    "i-toast": "../../dist/toast/index"
+    "i-toast": "../../dist/toast/index",
+    "i-action-sheet": "../../dist/action-sheet/index"
   }
 }

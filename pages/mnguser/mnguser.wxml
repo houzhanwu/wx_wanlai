@@ -1,0 +1,26 @@
+<!--pages/mnguser/mnguser.wxml-->
+<view class="container">
+  <view class="search">
+    <navigator url="/pages/search/search" class="input">
+      <image class="icon" src="../../static/images/ic_search.png"></image>
+      <text class="txt">搜索</text>
+    </navigator>
+  </view>
+  <view class="kind-list">
+    <view class="navigator-box">
+      <block wx:for="{{userList}}" wx:key="*item">
+        <i-cell i-class="iborder" title="{{item.name}}">
+          <view slot="footer" data-name="{{item.name}}" data-openid="{{item.weixin_openid}}" data-index="{{index}}" bindtap="addMyUser">
+            <i-icon type="collection_fill" wx:if="{{item.addflag}}" size="28"></i-icon>
+            <i-icon type="collection" wx:else size="28"></i-icon>
+          </view >
+        </i-cell>
+      </block>
+    </view>
+    <i-page current="{{ page.current }}" total="{{page.total}}" bind:change="handlePageChange">
+      <view slot="prev"><i-icon type="return" size="15"></i-icon></view>
+      <view slot="next"><i-icon type="enter" size="15"></i-icon></view>
+    </i-page>
+  </view>
+</view>
+<i-message id="message" />

@@ -18,8 +18,7 @@
       </view>    
       <view class="i-cell i-input" bindtap="showMyusers">
           <view class="i-cell-hd i-input-title">收货人</view>
-          <input class="i-input-input i-cell-bd" type="text" value="{{form.nickname}}" 
-            bindinput="bindNameChange" name="nickname" id="nickname"></input>
+          <view class="i-input-input i-cell-bd">{{form.nickname}}</view>
       </view>  
       <view class="i-cell i-input">
           <view class="i-cell-hd i-input-title">发货日期</view>
@@ -38,3 +37,9 @@
 </view>
 <i-message id="message" />
 <i-toast id="toast" />
+<i-action-sheet visible="{{ showSheet }}" actions="{{ receiveArray }}" 
+  show-cancel bind:cancel="hideSheet" bind:click="bindReceiveChange" >
+  <view slot="header">
+    <view   bindtap="mngMyuser" class="sheetheard">管理联系人</view>
+</view>
+</i-action-sheet>

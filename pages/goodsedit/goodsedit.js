@@ -24,7 +24,8 @@ Page({
     },
     receiveIndex: 0,
     receiveUsers: [],
-    receiveArray:[]
+    receiveArray:[],
+    showSheet: false
   },
   // 绑定日期改变的事件
   bindDateChange: function (e) {
@@ -34,7 +35,8 @@ Page({
     })
   },
   // 绑定收货人改变的事件
-  bindReceiveChange: function (index) {
+  bindReceiveChange: function ({ detail }) {
+    const index = detail.index;
     const reciveOpenid = this.data.receiveUsers[index].weixin_openid;
     const nickname = this.data.receiveUsers[index].name;
     this.setData({
@@ -43,53 +45,12 @@ Page({
       'form.nickname': nickname,
     })
   },
-  // 绑定收货人输入值的改变
-  bindNameChange: function (e) {
-    const name = e.detail.value ? e.detail.value : '';
-    util.request(api.GetMyusersByName, { name : name })
-    .then(res => {
-      if (res.data.err) {
-        console.log(err);
-        return;
-      }
-      if (res.data.length === 0) {
-        return;
-      } 
-      const receiveUsers = res.data;
-      const usrList = receiveUsers.map(item => {
-        return item.name;
-      })
-      this.setData({
-        receiveUsers: receiveUsers,
-        receiveArray: usrList,
-      })
-      const self = this;
-      wx.showActionSheet({
-        itemList: usrList,
-        success: function(res) {
-          console.log(res.tapIndex);
-          self.bindReceiveChange(res.tapIndex);
-        },
-        fail: function(res) {
-          console.log(res.errMsg)
-        }
-      })
-    }).catch( err => {
-      console.log(err);
-    })
-  },
   showMyusers: function () {
-    const self = this;
-    wx.showActionSheet({
-      itemList: this.data.receiveArray,
-      success: function(res) {
-        console.log(res.tapIndex);
-        self.bindReceiveChange(res.tapIndex);
-      },
-      fail: function(res) {
-        console.log(res.errMsg)
+    this.setData(
+      {
+        showSheet: true
       }
-    })
+    )
   },
   // 获取我的客户列表
   getMyusers: function () {
@@ -104,7 +65,10 @@ Page({
       } 
       const receiveUsers = res.data;
       const usrList = receiveUsers.map(item => {
-        return item.name;
+        const actions = {
+          name: item.name
+        }
+        return actions;
       })
       this.setData({
         receiveUsers: receiveUsers,
@@ -186,12 +150,24 @@ Page({
   formReset: function () {
     this.initForm();
   },
+  mngMyuser: function () {
+    this.setData({
+      showSheet: false
+    })
+    wx.navigateTo({
+      url: '/pages/myuser/myuser'
+    })
+  },
+  hideSheet: function () {
+    this.setData({
+      showSheet: false
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.initForm();
-    this.getMyusers();
   },
 
   /**
@@ -205,7 +181,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.getMyusers();
   },
 
   /**

@@ -66,16 +66,12 @@ Page({
             isShowAuth: true
           })
         } else {
-          user.checkLogin().then(res => {
-            console.log('用户已经登录');
-          }).catch(res => {
-            // 获取用户信息
-            user.loginByWeixin().then(res => {
-              console.log(res.data);
-            }).catch(err => {
-              console.log(err);
-            })
-          })
+          // 获取用户信息
+          user.loginByWeixin().then(res => {
+            console.log(res.data);
+          }).catch(err => {
+            console.log(err);
+          });  
         }
       }
     })

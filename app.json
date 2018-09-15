@@ -10,7 +10,9 @@
     "pages/sum/sum",
     "pages/search/search",
     "pages/inmoney/inmoney",
-    "pages/outmoney/outmoney"
+    "pages/outmoney/outmoney",
+    "pages/myuser/myuser",
+    "pages/mnguser/mnguser"
   ],
   "window": {
     "backgroundTextStyle": "dark",
