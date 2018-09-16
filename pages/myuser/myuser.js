@@ -14,9 +14,17 @@ Page({
       limit: 10,
       total: 0
     },
-    searchVaule: null
+    searchVaule: null,
+    showmodal: false,
+    id: ''
   },
-
+  disPlayModal: function (e) {
+    const id = e.currentTarget.id;
+    this.setData({
+      showmodal: true,
+      id: id
+    });
+  },
   getMyusers: function () {
     const search = { page: this.data.page };
     if (this.data.searchVaule) {
@@ -81,8 +89,11 @@ Page({
     }
     this.getMyusers();
   },
-  deleteMyUser: function(e) {
-    const id = e.currentTarget.id;
+  deleteMyUser: function() {
+    this.setData({
+      showmodal: false
+    });
+    const id = this.data.id;
     const url = `${api.GetMyusers}/${id}`;
     util.request(url, {}, 'DELETE').then(res => {
       if (res.data.err) {
@@ -96,6 +107,11 @@ Page({
     }).catch(err => {
       console.log(err)
     })
+  },
+  cancelModal () {
+    this.setData({
+      showmodal: false
+    });
   },
   /**
    * 生命周期函数--监听页面加载
