@@ -1,0 +1,10 @@
+/* pages/edituser/edituser.wxss */
+@import "../../dist/input/index.wxss";
+.btn-area {
+  display: flex;
+  flex-direction: row;
+  margin: 50rpx 30rpx;
+}
+.formbtn {
+  width:200rpx;
+}

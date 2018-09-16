@@ -11,8 +11,8 @@
       <block wx:for="{{userList}}" wx:key="*item">
         <i-cell i-class="iborder" title="{{item.name}}">
           <view slot="footer" data-name="{{item.name}}" data-openid="{{item.weixin_openid}}" data-index="{{index}}" bindtap="addMyUser">
-            <i-icon type="collection_fill" wx:if="{{item.addflag}}" size="28"></i-icon>
-            <i-icon type="collection" wx:else size="28"></i-icon>
+            <i-icon type="collection_fill" wx:if="{{item.addflag}}" size="28" color="#ed3f14"></i-icon>
+            <i-icon type="collection" wx:else size="28" color="#ed3f14"></i-icon>
           </view >
         </i-cell>
       </block>

@@ -1,0 +1,20 @@
+<!--pages/edituser/edituser.wxml-->
+<view class="page">
+    <i-panel title="昵称修改" i-class="panelback">
+      <form class="page__bd" catchsubmit="formSubmit" catchreset="formReset">
+        <view class="i-cell i-input">
+          <view class="i-cell-hd i-input-title">昵称</view>
+          <input class="i-input-input i-cell-bd" type="text" value="{{form.name}}" name="name" bindblur="checkRequire" id="name"></input>
+        </view>
+        <view class="btn-area">
+          <button formType="submit" type="primary" class="formbtn">确认</button>
+          <button formType="reset" type="primary" class="formbtn">删除</button>
+        </view>
+      </form>
+    </i-panel>
+  </view>
+  <i-message id="message" />
+  <i-toast id="toast" />
+  <i-modal visible="{{ showmodal }}" bind:ok="deleteMyUser" bind:cancel="cancelModal">
+    <view>是否要删除该联系人?</view>
+  </i-modal>

@@ -12,7 +12,8 @@
     "pages/inmoney/inmoney",
     "pages/outmoney/outmoney",
     "pages/myuser/myuser",
-    "pages/mnguser/mnguser"
+    "pages/mnguser/mnguser",
+    "pages/edituser/edituser"
   ],
   "window": {
     "backgroundTextStyle": "dark",

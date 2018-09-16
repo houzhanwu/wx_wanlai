@@ -6,12 +6,22 @@
         <block wx:for="{{payList}}" wx:key="*item">
           <i-cell i-class="iborder" title="{{item.name}}" label="{{item.payments}}元" 
             is-link url="{{index == 0 ? '/pages/inmoney/inmoney' : '/pages/outmoney/outmoney'}}">
-            <i-icon type="redpacket_fill" slot="icon" size="35" wx:if="{{index == 0}}"/>
-            <i-icon type="transaction_fill" slot="icon" size="35" wx:if="{{index == 1}}"/>
+            <i-icon type="redpacket_fill" slot="icon" size="35" color="#2d8cf0" wx:if="{{index == 0}}"/>
+            <i-icon type="transaction_fill" slot="icon" size="35" color="#2d8cf0" wx:if="{{index == 1}}"/>
           </i-cell>
         </block>
       </view>
     </view>
   </i-panel>
+  <i-panel title="个人信息管理" i-class="panelback">
+    <view class="kind-list">
+      <view class="navigator-box">
+        <i-cell i-class="iborder" title="常用联系人" 
+          is-link url="/pages/myuser/myuser">
+          <i-icon type="addressbook" slot="icon" size="35" color="#2d8cf0"/>
+        </i-cell>
+      </view>
+    </view>
+  </i-panel>  
 </view>
 <i-message id="message" />

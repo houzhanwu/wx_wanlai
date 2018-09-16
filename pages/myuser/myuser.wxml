@@ -9,10 +9,8 @@
   <view class="kind-list">
     <view class="navigator-box">
       <block wx:for="{{userList}}" wx:key="*item">
-        <i-cell i-class="iborder" title="{{item.name}}">
-          <view slot="footer" id="{{item._id}}" bindtap="disPlayModal">
-            <i-icon type="delete_fill" size="28" color="#ed3f14"></i-icon>
-          </view >
+        <i-cell i-class="iborder" title="{{item.name}}"  
+          is-link url="/pages/edituser/edituser?id={{item._id}}&name={{item.name}}&openid={{item.weixin_openid}}">
         </i-cell>
       </block>
     </view>
@@ -25,7 +23,4 @@
 <view class="round-click">
   <navigator url="/pages/mnguser/mnguser">增加客户</navigator>
 </view>
-<i-modal visible="{{ showmodal }}" bind:ok="deleteMyUser" bind:cancel="cancelModal">
-  <view>是否要删除该联系人?</view>
-</i-modal>
 <i-message id="message" />
