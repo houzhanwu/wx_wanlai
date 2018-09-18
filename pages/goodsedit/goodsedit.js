@@ -43,6 +43,7 @@ Page({
       receiveIndex: index,
       'form.reciveOpenid': reciveOpenid,
       'form.nickname': nickname,
+      showSheet: false
     })
   },
   showMyusers: function () {

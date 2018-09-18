@@ -27,7 +27,7 @@ Page({
   },
 
   getBanners: function () {
-    util.request(api.GetBanners).then(res => {
+    util.request(api.GetBanners, { imgtype: 'advert'}).then(res => {
       const banners = res.data.map(item => {
         item.imgUrl = api.SvrUrl + item.imgUrl;
         return item

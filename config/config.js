@@ -1,10 +1,10 @@
-const ApiRootUrl = 'https://cs.phoenixtea.org/api/';
-// const ApiRootUrl = 'http://192.168.11.170:7001/api/';
+// const ApiRootUrl = 'https://cs.phoenixtea.org/api/';
+const ApiRootUrl = 'http://192.168.11.170:7001/api/';
 module.exports = {
-  SvrUrl: 'https://cs.phoenixtea.org',
-  // SvrUrl: 'http://192.168.11.170:7001',
+  // SvrUrl: 'https://cs.phoenixtea.org',
+  SvrUrl: 'http://192.168.11.170:7001',
   AuthLoginByWeixin: ApiRootUrl + 'user/wxlogin',                     // 微信登录
-  GetBanners: ApiRootUrl + 'banner',                                  // 获取广告条
+  GetBanners: ApiRootUrl + 'banner/getAdvert',                        // 获取广告条
   Business: ApiRootUrl + 'business',                                  // 生成交易
   GetGoodsOfSender: ApiRootUrl + 'business/getGoodsOfSender',         // 获取发货方各个状态的交易信息
   GetAllGoodsOfSender: ApiRootUrl + 'business/getAllGoodsOfSender',   // 获取发货方所有状态的交易信息

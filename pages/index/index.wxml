@@ -2,7 +2,7 @@
 <view class="container" wx:if="{{!isShowAuth}}">
   <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
     <swiper-item wx:for="{{banners}}" wx:key="{{item.id}}">
-      <navigator url="{{item.link}}">
+      <navigator url="{{item.linkUrl}}">
         <image src="{{item.imgUrl}}" background-size="cover"></image>
       </navigator>
     </swiper-item>
