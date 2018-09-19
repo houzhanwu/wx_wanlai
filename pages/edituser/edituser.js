@@ -62,6 +62,8 @@ Page({
   },
   formSubmit: function (e) {
     const form = this.data.form;
+    const form_id = e.detail.formId;
+    util.collectFormIds(form_id);
     Object.assign(form, e.detail.value);
     this.setData({
       form: form

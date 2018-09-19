@@ -74,8 +74,10 @@ Page({
     })
   },
   // 收货确认
-  receiveGoods: function () {
+  receiveGoods: function (e) {
     const form = this.data.form;
+    const form_id = e.detail.formId;
+    util.collectFormIds(form_id);
     form.status = '2';
     form.reciveDate = new Date().toLocaleDateString();
     util.request(`${api.Business}/${this.data.id}`, form, 'PUT')
@@ -102,6 +104,7 @@ Page({
   payGoods: function (e) {
     const form = this.data.form;
     const form_id = e.detail.formId;
+    util.collectFormIds(form_id);
     form.form_id = form_id;
     this.setData({
       form: form
@@ -129,8 +132,10 @@ Page({
       } 
     })
   },
-  payConfirm: function () {
+  payConfirm: function (e) {
     const form = this.data.form;
+    const form_id = e.detail.formId;
+    util.collectFormIds(form_id);
     form.status = '4';
     form.reciveMoneyDate = new Date().toLocaleDateString();
     util.request(`${api.Business}/${this.data.id}`, form, 'PUT')
@@ -173,7 +178,9 @@ Page({
       'form.paymethod': paymethod,
     })
   },
-  okModal () {
+  okModal (e) {
+    const form_id = e.detail.formId;
+    util.collectFormIds(form_id);
     this.setData({
       showmodal: true
     });

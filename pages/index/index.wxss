@@ -6,3 +6,23 @@
   align-content: center;
   padding: 350rpx 50rpx;
 }
+.navbtn {
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+}
+.navform {
+  width: 100%;
+}
+.navigator-text {
+  flex:1;
+  text-align:left;
+}
+button[plain] {
+  color:#353535;
+  border:0px solid #353535;
+  background-color:transparent;
+}
+  
+  

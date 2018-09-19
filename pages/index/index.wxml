@@ -11,8 +11,12 @@
     <view class="navigator-box">
       <block wx:for="{{operationList}}" wx:key="*item">
         <navigator url="/pages/{{item.page}}/{{item.page}}" class="navigator">
-          <view class="navigator-text">{{item.pageName}}</view>
-          <view class="navigator-arrow"></view>
+          <form catchsubmit="formSubmit" report-submit="{{true}}" class="navform">
+            <button class='navbtn' form-type='submit' data-name='buttonName' plain="{{true}}">
+              <view class="navigator-text">{{item.pageName}}</view>
+              <view class="navigator-arrow"></view>
+            </button>
+        </form>
         </navigator>
       </block>
     </view>

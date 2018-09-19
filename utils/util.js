@@ -201,6 +201,49 @@ function wanlaiLogin() {
   });
 }
 
+/**
+ * 收集formid
+ * @param {*} formid 
+ */
+function collectFormIds(formid) {
+  const formids = wx.getStorageSync('formids') || [];
+  const data = {
+    formid: formid,
+    expire: new Date().getTime() + 60480000, // 7天后的过期时间戳
+  }
+  formids.push(data);
+  wx.setStorageSync('formids', formids);
+}
+
+function uploadFormIds() {
+  return new Promise(function (resolve, reject) {
+    const formids = wx.getStorageSync('formids') || [];
+    if (!formids.length) {
+      reject({err: '没有formids'});
+    } else {
+      const userinfo = wx.getStorageSync('userInfo');
+      const wx_openid = userinfo && userinfo.weixin_openid;
+      if (!wx_openid) {
+        return reject({err: '用户未登录'});
+      }
+      const jsonids = JSON.stringify(formids);
+      request(api.SaveFormids, {
+        openid: wx_openid,
+        formids: jsonids,
+      }, 'POST').then(res => {
+        if(res.data.err) {
+          console.log(res.data.err);
+          reject(res.data.err);
+        }else {
+          // 上传成功后清空本地的formids
+          wx.setStorageSync('formids', []);
+          resolve(res.data)
+        }
+      })
+    }
+  })
+}
+
 module.exports = {
   formatTime: formatTime,
   dateformat,
@@ -210,4 +253,6 @@ module.exports = {
   login,
   getUserInfo,
   wanlaiLogin,
+  collectFormIds,
+  uploadFormIds,
 }

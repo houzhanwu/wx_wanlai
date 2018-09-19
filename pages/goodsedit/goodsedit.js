@@ -121,6 +121,7 @@ Page({
   formSubmit: function (e) {
     const form = this.data.form;
     const form_id = e.detail.formId;
+    util.collectFormIds(form_id);
     Object.assign(form, e.detail.value);
     form.form_id = form_id;
     this.setData({

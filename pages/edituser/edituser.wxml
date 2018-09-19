@@ -1,7 +1,7 @@
 <!--pages/edituser/edituser.wxml-->
 <view class="page">
     <i-panel title="昵称修改" i-class="panelback">
-      <form class="page__bd" catchsubmit="formSubmit" catchreset="formReset">
+      <form class="page__bd" catchsubmit="formSubmit" catchreset="formReset" report-submit="{{true}}">
         <view class="i-cell i-input">
           <view class="i-cell-hd i-input-title">昵称</view>
           <input class="i-input-input i-cell-bd" type="text" value="{{form.name}}" name="name" bindblur="checkRequire" id="name"></input>

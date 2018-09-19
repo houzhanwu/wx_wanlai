@@ -52,6 +52,10 @@ Page({
       console.log(err);
     })
   },
+  formSubmit (e) {
+    const form_id = e.detail.formId;
+    util.collectFormIds(form_id);
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -88,7 +92,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    util.uploadFormIds().then(res => {
+
+    }).catch(err => {
+      console.log(err)
+    });
   },
 
   /**
