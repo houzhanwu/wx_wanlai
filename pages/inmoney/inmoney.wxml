@@ -11,4 +11,5 @@
     </view>
   </view>
 </view>  
+<nav-bar current="sum"></nav-bar>
 <i-message id="message" />

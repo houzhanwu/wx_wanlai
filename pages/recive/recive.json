@@ -4,6 +4,7 @@
     "i-message": "../../dist/message/index",
     "i-cell": "../../dist/cell/index",
     "i-page": "../../dist/page/index",
-    "i-icon": "../../dist/icon/index"
+    "i-icon": "../../dist/icon/index",
+    "nav-bar": "/commpents/navbar/index"
   }
 }

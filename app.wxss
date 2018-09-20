@@ -41,3 +41,15 @@
   border-width:1rpx;
   border-color:#e9eaec;
 }
+.page-foot{
+  text-align:center;
+  color:#1aad19;
+  font-size:0;
+  bottom: 5rpx;
+  position: fixed;
+}
+.icon-foot{
+  width: 63rpx;
+  height: 63rpx;
+}
+  

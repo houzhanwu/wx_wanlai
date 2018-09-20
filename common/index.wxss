@@ -46,6 +46,7 @@
   height: auto;
   overflow: hidden;
   width: 750rpx;
+  margin-bottom: 100rpx;
 }
 
 .navigator-box {
@@ -62,6 +63,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  padding: 10rpx;
 }
 .navigator:before {
   content: " ";
@@ -78,6 +80,7 @@
 }
 .navigator-text {
   flex: 1;
+  font-size:32rpx;
 }
 .navigator-arrow {
   padding-right: 26rpx;

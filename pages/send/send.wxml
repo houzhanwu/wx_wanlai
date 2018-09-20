@@ -22,4 +22,5 @@
     <navigator url="/pages/goodsedit/goodsedit">发货</navigator>
  </view>
 </view>
+<nav-bar></nav-bar>
 <i-message id="message" />

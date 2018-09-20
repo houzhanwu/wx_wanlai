@@ -11,29 +11,29 @@
     <i-cell title="交易状态" value="{{form.statusName}}"></i-cell>
     <i-cell title="支付方式" value="{{form.paymethod}}" wx:if="{{form.status >= '3'}}"></i-cell>
     <block wx:if="{{form.status == '1' && flag == 'send'}}">
-        <form catchsubmit="okModal" report-submit="{{true}}" class="page__bd">
-            <button type="primary"  formType="submit" >取消发货</button>
+        <form bindsubmit="okModal" report-submit="{{true}}" class="page__bd">
+            <button type="primary"  formType="submit" loading="{{runing}}">取消发货</button>
         </form>
     </block>
     <block wx:if="{{form.status == '1' && flag == 'receive'}}">
-      <form catchsubmit="receiveGoods" report-submit="{{true}}" class="page__bd">
-          <button type="primary"  formType="submit" >确认收货</button>
+      <form bindsubmit="receiveGoods" report-submit="{{true}}" class="page__bd">
+          <button type="primary"  formType="submit" loading="{{runing}}" >确认收货</button>
       </form>
     </block>
     
     <view  wx:if="{{form.status < '3' && flag == 'pay'}}">
-      <form class="page__bd" catchsubmit="payGoods" report-submit="{{true}}">
+      <form class="page__bd" bindsubmit="payGoods" report-submit="{{true}}">
         <view class="i-cell i-input" bindtap="showPayMethod">
             <view class="i-cell-hd i-input-title">支付方式</view>
             <input class="i-input-input i-cell-bd" type="text" value="{{form.paymethod}}" 
               name="paymethod" placeholder="请输入支付方式" id="paymethod"></input>
         </view>
-        <button formType="submit" type="primary">确认付款</button>
+        <button formType="submit" type="primary" loading="{{runing}}" >确认付款</button>
       </form>
     </view>
     <block wx:if="{{form.status == '3' && flag == 'confirm'}}">
-      <form catchsubmit="payConfirm" report-submit="{{true}}" class="page__bd">
-          <button type="primary"  formType="submit" >确认收款</button>
+      <form bindsubmit="payConfirm" report-submit="{{true}}" class="page__bd">
+          <button type="primary"  formType="submit" loading="{{runing}}">确认收款</button>
       </form>
     </block>
   </i-panel>

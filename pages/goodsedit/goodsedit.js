@@ -25,7 +25,8 @@ Page({
     receiveIndex: 0,
     receiveUsers: [],
     receiveArray:[],
-    showSheet: false
+    showSheet: false,
+    runing: false
   },
   // 绑定日期改变的事件
   bindDateChange: function (e) {
@@ -119,6 +120,9 @@ Page({
     })
   },
   formSubmit: function (e) {
+    this.setData({
+      runing: true
+    })
     const form = this.data.form;
     const form_id = e.detail.formId;
     util.collectFormIds(form_id);
@@ -140,12 +144,18 @@ Page({
           type: 'error'
         })
       }
+      this.setData({
+        runing: false
+      })
     })
     .catch(err => {
       console.log(err)
       $Message({
         content: '发货失败',
         type: 'error'
+      })
+      this.setData({
+        runing: false
       })
     })
   },

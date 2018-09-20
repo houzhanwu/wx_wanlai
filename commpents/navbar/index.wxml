@@ -1,0 +1,5 @@
+<!--commpents/navbar/index.wxml-->
+<i-tab-bar current="{{ current }}" bindchange="handleChange" fixed="{{true}}">
+  <i-tab-bar-item key="index" title="首页" img="/static/images/ic_menu_choice_nor.png"      current-img="/static/images/ic_menu_choice_pressed.png"></i-tab-bar-item>
+  <i-tab-bar-item key="sum"  title="统计" img="/static/images/ic_menu_me_nor.png" current-img="/static/images/ic_menu_me_pressed.png"></i-tab-bar-item>
+</i-tab-bar>

@@ -29,6 +29,7 @@ Page({
     id: '',
     flag: '',
     showmodal: false,
+    runing: false,
     methodArray: [
       '微信支付',
       '支付宝支付',
@@ -57,7 +58,8 @@ Page({
   },
   deleteGoos: function () {
     this.setData({
-      showmodal: false
+      showmodal: true,
+      runing: true
     });
     util.request(`${api.Business}/${this.data.id}`, {}, 'DELETE')
     .then(res => {
@@ -68,13 +70,25 @@ Page({
         })
         return;
       }
+      this.setData({
+        runing: false
+      })
       wx.navigateBack({
         delta: 1, // 回退前 delta(默认为1) 页面
       })
     })
+    .catch(err => {
+      console.log(err);
+      this.setData({
+        runing: false
+      });
+    })
   },
   // 收货确认
   receiveGoods: function (e) {
+    this.setData({
+      runing: true
+    });
     const form = this.data.form;
     const form_id = e.detail.formId;
     util.collectFormIds(form_id);
@@ -82,6 +96,9 @@ Page({
     form.reciveDate = new Date().toLocaleDateString();
     util.request(`${api.Business}/${this.data.id}`, form, 'PUT')
     .then(res => {
+      this.setData({
+        runing: false
+      });
       if(res.data.err) {
         $Message({
           content: res.data.err,
@@ -100,8 +117,17 @@ Page({
         })
       } 
     })
+    .catch(err => {
+      console.log(err);
+      this.setData({
+        runing: false
+      });
+    })
   },
   payGoods: function (e) {
+    this.setData({
+      runing: true
+    });
     const form = this.data.form;
     const form_id = e.detail.formId;
     util.collectFormIds(form_id);
@@ -113,6 +139,9 @@ Page({
     form.payMoneyDate = new Date().toLocaleDateString();
     util.request(`${api.Business}/${this.data.id}`, form, 'PUT')
     .then(res => {
+      this.setData({
+        runing: false
+      });
       if(res.data.err) {
         $Message({
           content: res.data.err,
@@ -131,8 +160,17 @@ Page({
         })
       } 
     })
+    .catch(err => {
+      console.log(err);
+      this.setData({
+        runing: false
+      })
+    })
   },
   payConfirm: function (e) {
+    this.setData({
+      runing: true
+    });
     const form = this.data.form;
     const form_id = e.detail.formId;
     util.collectFormIds(form_id);
@@ -140,6 +178,9 @@ Page({
     form.reciveMoneyDate = new Date().toLocaleDateString();
     util.request(`${api.Business}/${this.data.id}`, form, 'PUT')
     .then(res => {
+      this.setData({
+        runing: false
+      });
       if(res.data.err) {
         $Message({
           content: res.data.err,
@@ -157,6 +198,11 @@ Page({
           url: '/pages/gather/gather'
         })
       } 
+    }).catch(err => {
+      console.log(err);
+      this.setData({
+        runing: false
+      })
     })
   },
   showPayMethod: function () {

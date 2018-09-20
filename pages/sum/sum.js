@@ -18,6 +18,8 @@ Page({
         payments: 0
       },
     ],
+    avatar: '',
+    nickName:''
   },
 
   getTotalMoney: function () {
@@ -67,6 +69,11 @@ Page({
    */
   onLoad: function (options) {
     this.getTotalMoney();
+    const user = wx.getStorageSync('userInfo');
+    this.setData({
+      avatar: user.avatar,
+      nickName: user.name
+    })
   }
 
 })

@@ -1,0 +1,6 @@
+/* commpents/navbar/index.wxss */
+.i-tab-bar-item-img {
+  width:28px !important;
+  height:28px !important;
+}
+  

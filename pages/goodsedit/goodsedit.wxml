@@ -1,7 +1,7 @@
 <!--pages/goodsedit/goodsedit.wxml-->
 <view class="page">
   <i-panel title="创建发货单" i-class="panelback">
-    <form class="page__bd" catchsubmit="formSubmit" catchreset="formReset" report-submit="{{true}}">
+    <form class="page__bd" bindsubmit="formSubmit" bindreset="formReset" report-submit="{{true}}">
       <view class="i-cell i-input">
         <view class="i-cell-hd i-input-title">货物名称</view>
         <input class="i-input-input i-cell-bd" type="text" value="{{form.goodsName}}" name="goodsName" bindblur="checkRequire" id="goodsName"></input>
@@ -29,7 +29,7 @@
           </picker>
       </view>
       <view class="btn-area">
-        <button formType="submit" type="primary" class="formbtn">确认</button>
+        <button formType="submit" type="primary" class="formbtn" loading="{{runing}}">确认</button>
         <button formType="reset" type="primary" class="formbtn">重置</button>
       </view>
     </form>

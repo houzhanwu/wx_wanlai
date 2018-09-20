@@ -19,5 +19,6 @@
     </i-page>
   </view>
 </view>
+<nav-bar></nav-bar>
 <i-message id="message" />
 

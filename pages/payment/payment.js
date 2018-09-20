@@ -16,7 +16,6 @@ Page({
     },
     searchVaule: null
   },
-
   getNoPayGoods: function (status) {
     const search = {status: status, page: this.data.page};
     if (this.data.searchVaule) {
