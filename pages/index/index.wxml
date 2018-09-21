@@ -10,14 +10,14 @@
   <view class="kind-list">
     <view class="navigator-box">
       <block wx:for="{{operationList}}" wx:key="*item">
-        <navigator url="/pages/{{item.page}}/{{item.page}}" class="navigator">
-          <form bindsubmit="formSubmit" report-submit="{{true}}" class="navform">
-            <button class='navbtn' form-type='submit' data-name='buttonName' plain="{{true}}">
+
+          <form bindsubmit="formSubmit" report-submit="{{true}}" class="navform" data-url="/pages/{{item.page}}/{{item.page}}">
+            <button class='navbtn navigator' form-type='submit'  plain="{{true}}" hover-class="none">
               <view class="navigator-text">{{item.pageName}}</view>
               <view class="navigator-arrow"></view>
             </button>
-        </form>
-        </navigator>
+          </form>
+
       </block>
     </view>
   </view>

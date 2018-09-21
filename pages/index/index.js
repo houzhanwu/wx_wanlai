@@ -54,7 +54,12 @@ Page({
   },
   formSubmit (e) {
     const form_id = e.detail.formId;
+    const url = e.currentTarget.dataset.url;
+    console.log(`formid:${form_id}`);
     util.collectFormIds(form_id);
+    wx.navigateTo({
+      url: url
+    });
   },
   /**
    * 生命周期函数--监听页面加载
